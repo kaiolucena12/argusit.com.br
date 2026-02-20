@@ -1,148 +1,166 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Headset, Network, Settings, ShieldCheck } from "lucide-react";
+import ParticlesBackground from "./components/ParticlesBackground";
+import StatsSection from "./components/StatsSection";
+import CyberMap from "./components/CyberMap";
+import LgpdBadge from "./components/LgpdBadge";
+import UptimePanel from "./components/UptimePanel";
+import HeroTerminal from "./components/HeroTerminal";
+import CodeBackground from "./components/CodeBackground";
+
 
 export default function Home() {
   return (
     <>
-      {/* HERO — centralizado de verdade, sem padding extra */}
-      <section className="bg-[#061822] min-h-[calc(100svh-64px)] grid place-content-center text-center">
-        <div className="max-w-5xl mx-auto px-6 flex flex-col items-center gap-3 md:gap-4">
-          {/* Logo: escala correta; nada de margens inferiores arbitrárias */}
+      {/* HERO */}
+      <section className="relative flex flex-col items-center justify-center text-center min-h-[95vh] px-6 text-white overflow-hidden">
+
+  {/* Gradiente animado */}
+  <div className="absolute inset-0 bg-[linear-gradient(-45deg,#082a3f,#0b3d5c,#061923,#0e2f44)] bg-[length:400%_400%] animate-gradient -z-20" />
+
+  {/* Glow */}
+  <div className="absolute w-[500px] h-[500px] bg-orange-500/20 blur-[120px] rounded-full -z-10" />
+
+  <ParticlesBackground />
+
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <Image
             src="/logo-argus.png"
             alt="Argus IT"
-            width={208} // ~w-52
-            height={72}
-            className="h-auto w-40 md:w-52"
+            width={220}
+            height={80}
+            className="mb-8"
             priority
           />
+        </motion.div>
 
-          {/* Título com line-height compacto e animação suave */}
-          <h1
-            className="text-white font-semibold tracking-tight
-                       text-[28px] leading-[1.15]
-                       md:text-6xl md:leading-[1.08] animate-fade-up"
-            style={{ animationDelay: "80ms" }}
-          >
-            Tecnologia que protege,
-            <br />
-            conecta e impulsiona empresas
-          </h1>
+        {/* Título */}
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight relative z-10"
+        >
+          Tecnologia que protege,
+          <br />
+          conecta e impulsiona empresas
+        </motion.h1>
 
-          {/* Parágrafo com respiro medido e animação */}
-          <p
-            className="max-w-2xl mx-auto text-gray-200 text-base md:text-lg leading-relaxed animate-fade-up"
-            style={{ animationDelay: "160ms" }}
-          >
-            A Argus IT oferece soluções completas em tecnologia da informação,
-            segurança digital, infraestrutura de redes e gestão de TI para
-            empresas que buscam estabilidade, proteção e crescimento sustentável.
-          </p>
+        {/* Texto */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 0.6 }}
+          className="mt-6 max-w-2xl text-gray-300 text-lg leading-relaxed"
+        >
+          Soluções completas em tecnologia da informação,
+          segurança digital e infraestrutura corporativa
+          para empresas que buscam estabilidade e crescimento sustentável.
+        </motion.p>
 
-          {/* CTA com presença, sem exagero no espaçamento */}
-          <a
-            href="https://wa.me/5581999776309"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center
-                       bg-[#d46a1f] hover:bg-[#b85618] text-white
-                       font-medium px-8 md:px-10 py-3.5 md:py-4 rounded-xl
-                       transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#d46a1f] focus:ring-offset-[#061822]
-                       animate-fade-up"
-            style={{ animationDelay: "220ms" }}
-          >
-            Falar com um especialista
-          </a>
-        </div>
+        {/* Botão */}
+        <motion.a
+          href="https://wa.me/5581999776309"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.9 }}
+          className="mt-10 inline-flex bg-[#ff6a00] hover:bg-[#e65c00] 
+                     text-white font-medium tracking-wide 
+                     px-8 py-3 rounded-xl 
+                     transition-all duration-300 
+                     hover:scale-105 hover:shadow-lg"
+        >
+          Falar com Especialista
+        </motion.a>
+        <div className="neon-divider w-full absolute bottom-0 left-0" />
+
       </section>
 
       {/* SERVIÇOS */}
-      <section className="bg-white text-[#0b2540] py-24">
+      <section className="relative py-28 bg-[#061923] text-white overflow-hidden">
+
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2
-            className="text-3xl md:text-4xl font-semibold tracking-tight animate-fade-up"
-            style={{ animationDelay: "80ms" }}
+
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-semibold"
           >
             Soluções de tecnologia sob medida
-          </h2>
+          </motion.h2>
 
-          <p
-            className="mt-4 max-w-3xl mx-auto text-gray-600 animate-fade-up"
-            style={{ animationDelay: "140ms" }}
-          >
-            Atuamos de forma estratégica para garantir estabilidade, segurança e
-            desempenho à infraestrutura de tecnologia da sua empresa, com
-            soluções pensadas para crescer junto com o seu negócio.
-          </p>
+          <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* ASSISTÊNCIA TÉCNICA */}
-            <div
-              className="group border border-gray-200 rounded-2xl p-8 transition-all
-                         hover:-translate-y-2 hover:shadow-xl animate-fade-up"
-              style={{ animationDelay: "60ms" }}
-            >
-              <Headset className="w-10 h-10 mx-auto text-[#0b5b8a] group-hover:text-[#d46a1f] transition-colors" />
-              <h3 className="mt-6 font-semibold">Assistência Técnica</h3>
-              <p className="mt-3 text-sm text-gray-600">
-                Suporte técnico especializado para ambientes corporativos, com
-                agilidade e confiabilidade.
-              </p>
-            </div>
-
-            {/* INFRAESTRUTURA DE TIC */}
-            <Link href="/infraestrutura-de-tic" className="group">
-              <div
-                className="border border-gray-200 rounded-2xl p-8 transition-all
-                           hover:-translate-y-2 hover:shadow-xl hover:border-[#0b5b8a] animate-fade-up"
-                style={{ animationDelay: "120ms" }}
+            {[
+              {
+                name: "Assistência Técnica",
+                href: "/assistencia-tecnica",
+                icon: <Headset className="w-10 h-10 text-white" />,
+              },
+              {
+                name: "Infraestrutura de TIC",
+                href: "/infraestrutura-de-tic",
+                icon: <Network className="w-10 h-10 text-white" />,
+              },
+              {
+                name: "Gestão de TI",
+                href: "/gestao-de-ti",
+                icon: <Settings className="w-10 h-10 text-white" />,
+              },
+              {
+                name: "Segurança Digital",
+                href: "/seguranca-digital",
+                icon: <ShieldCheck className="w-10 h-10 text-white" />,
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
               >
-                <Network className="w-10 h-10 mx-auto text-[#0b5b8a] group-hover:text-[#d46a1f] transition-colors" />
-                <h3 className="mt-6 font-semibold">Infraestrutura de TIC</h3>
-                <p className="mt-3 text-sm text-gray-600">
-                  Projetos de redes, servidores e conectividade corporativa com
-                  alto desempenho.
-                </p>
-              </div>
-            </Link>
+                <Link href={item.href}>
+                  <div
+                    className="group backdrop-blur-xl bg-white/10 
+                               border border-white/20 
+                               rounded-2xl p-10 
+                               hover:bg-white/20
+                               hover:shadow-2xl 
+                               hover:-translate-y-3 
+                               transition-all duration-500 
+                               cursor-pointer"
+                  >
+                    <div className="flex justify-center mb-6 group-hover:text-[#ff6a00] transition-colors duration-300">
+                      {item.icon}
+                    </div>
 
-            {/* GESTÃO DE TI */}
-            <Link href="/gestao-de-ti" className="group">
-              <div
-                className="border border-gray-200 rounded-2xl p-8 transition-all
-                           hover:-translate-y-2 hover:shadow-xl hover:border-[#0b5b8a] animate-fade-up"
-                style={{ animationDelay: "180ms" }}
-              >
-                <Settings className="w-10 h-10 mx-auto text-[#0b5b8a] group-hover:text-[#d46a1f] transition-colors" />
-                <h3 className="mt-6 font-semibold">Gestão de TI</h3>
-                <p className="mt-3 text-sm text-gray-600">
-                  Monitoramento, governança e organização estratégica da
-                  tecnologia da sua empresa.
-                </p>
-              </div>
-            </Link>
+                    <h3 className="font-semibold text-white group-hover:text-[#ff6a00] transition-colors duration-300">
+                      {item.name}
+                    </h3>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
 
-            {/* SEGURANÇA DIGITAL */}
-            <Link href="/seguranca-digital" className="group">
-              <div
-                className="border border-gray-200 rounded-2xl p-8 transition-all
-                           hover:-translate-y-2 hover:shadow-xl hover:border-[#0b5b8a] animate-fade-up"
-                style={{ animationDelay: "240ms" }}
-              >
-                <ShieldCheck className="w-10 h-10 mx-auto text-[#0b5b8a] group-hover:text-[#d46a1f] transition-colors" />
-                <h3 className="mt-6 font-semibold">Segurança Digital</h3>
-                <p className="mt-3 text-sm text-gray-600">
-                  Proteção de dados, redes e sistemas contra ameaças digitais e
-                  ataques cibernéticos.
-                </p>
-              </div>
-            </Link>
           </div>
         </div>
       </section>
+      <StatsSection />
+      <LgpdBadge />
     </>
   );
 }
