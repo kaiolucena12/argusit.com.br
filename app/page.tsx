@@ -77,7 +77,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.9 }}
           className="mt-10 inline-flex bg-[#ff6a00] hover:bg-[#e65c00] 
                      text-white font-medium tracking-wide 
-                     px-8 py-3 rounded-xl 
+                     px-8 py-3 my-4 md:my-0 rounded-xl 
                      transition-all duration-300 
                      hover:scale-105 hover:shadow-lg"
         >

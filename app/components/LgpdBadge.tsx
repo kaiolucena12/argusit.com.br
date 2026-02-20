@@ -9,10 +9,10 @@ export default function LgpdBadge() {
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        whileInView={{ opacity: 1, scale: 0.9 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="inline-flex flex-col items-center border border-orange-500/30 bg-white/5 backdrop-blur-xl px-10 py-10 rounded-2xl shadow-[0_0_40px_rgba(255,106,0,0.2)]"
+        className="inline-flex flex-col items-center border border-orange-500/30 bg-white/5 backdrop-blur-xl p-4 rounded-2xl shadow-[0_0_40px_rgba(255,106,0,0.2)]"
       >
         <ShieldCheck className="w-14 h-14 text-orange-500 mb-4" />
 
