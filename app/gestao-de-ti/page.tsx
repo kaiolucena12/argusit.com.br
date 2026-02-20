@@ -1,6 +1,6 @@
 import { Settings, BarChart3, Clock, Shield } from "lucide-react"
 import type { Metadata } from "next"
-import Footer from "./components/Footer";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
   title: "Gestão de TI para Empresas",
