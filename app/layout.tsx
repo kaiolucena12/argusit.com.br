@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,16 +20,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className} bg-[#082a3f] antialiased`}>
-        
+      <body
+        className={`${inter.className} bg-[#082a3f] antialiased flex flex-col min-h-screen`}
+      >
         {/* Header fixo */}
         <Header />
 
         {/* Conteúdo principal */}
-        <main className="pt-20 min-h-screen">
+        <main className="pt-20 flex-grow">
           {children}
         </main>
 
+        {/* Footer global */}
+        <Footer />
       </body>
     </html>
   );

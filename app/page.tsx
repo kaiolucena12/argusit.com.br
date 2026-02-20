@@ -11,6 +11,7 @@ import LgpdBadge from "./components/LgpdBadge";
 import UptimePanel from "./components/UptimePanel";
 import HeroTerminal from "./components/HeroTerminal";
 import CodeBackground from "./components/CodeBackground";
+import Footer from "./components/Footer";
 
 
 export default function Home() {
@@ -18,7 +19,6 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative flex flex-col items-center justify-center text-center min-h-[95vh] px-6 text-white overflow-hidden">
-
   {/* Gradiente animado */}
   <div className="absolute inset-0 bg-[linear-gradient(-45deg,#082a3f,#0b3d5c,#061923,#0e2f44)] bg-[length:400%_400%] animate-gradient -z-20" />
 
@@ -87,80 +87,116 @@ export default function Home() {
 
       </section>
 
-      {/* SERVIÇOS */}
-      <section className="relative py-28 bg-[#061923] text-white overflow-hidden">
 
-        <div className="max-w-7xl mx-auto px-6 text-center">
+{/* ===== SEÇÃO SOLUÇÕES ===== */}
+<section className="py-24 bg-white">
 
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-semibold"
-          >
-            Soluções de tecnologia sob medida
-          </motion.h2>
+  <div className="max-w-7xl mx-auto px-6 text-center">
 
-          <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <h2 className="text-3xl md:text-4xl font-bold text-[#082a3f] mb-16">
+      Soluções de tecnologia sob medida
+    </h2>
 
-            {[
-              {
-                name: "Assistência Técnica",
-                href: "/assistencia-tecnica",
-                icon: <Headset className="w-10 h-10 text-white" />,
-              },
-              {
-                name: "Infraestrutura de TIC",
-                href: "/infraestrutura-de-tic",
-                icon: <Network className="w-10 h-10 text-white" />,
-              },
-              {
-                name: "Gestão de TI",
-                href: "/gestao-de-ti",
-                icon: <Settings className="w-10 h-10 text-white" />,
-              },
-              {
-                name: "Segurança Digital",
-                href: "/seguranca-digital",
-                icon: <ShieldCheck className="w-10 h-10 text-white" />,
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-              >
-                <Link href={item.href}>
-                  <div
-                    className="group backdrop-blur-xl bg-white/10 
-                               border border-white/20 
-                               rounded-2xl p-10 
-                               hover:bg-white/20
-                               hover:shadow-2xl 
-                               hover:-translate-y-3 
-                               transition-all duration-500 
-                               cursor-pointer"
-                  >
-                    <div className="flex justify-center mb-6 group-hover:text-[#ff6a00] transition-colors duration-300">
-                      {item.icon}
-                    </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-                    <h3 className="font-semibold text-white group-hover:text-[#ff6a00] transition-colors duration-300">
-                      {item.name}
-                    </h3>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+      {/* ASSISTÊNCIA */}
+      <Link
+        href="/assistencia-tecnica"
+        className="group bg-white 
+                   border border-gray-200 
+                   rounded-2xl 
+                   p-10 
+                   shadow-md
+                   hover:shadow-2xl
+                   hover:-translate-y-2
+                   transition-all duration-500 
+                   cursor-pointer block"
+      >
+        <Headset
+          size={40}
+          strokeWidth={1.5}
+          className="mx-auto mb-6 text-[#082a3f] group-hover:text-orange-500 transition"
+        />
+        <h3 className="text-lg font-semibold text-gray-900">
+          Assistência Técnica
+        </h3>
+      </Link>
 
-          </div>
-        </div>
-      </section>
+      {/* INFRAESTRUTURA */}
+      <Link
+        href="/infraestrutura-de-tic"
+        className="group bg-white 
+                   border border-gray-200 
+                   rounded-2xl 
+                   p-10 
+                   shadow-md
+                   hover:shadow-2xl
+                   hover:-translate-y-2
+                   transition-all duration-500 
+                   cursor-pointer block"
+      >
+        <Network
+          size={40}
+          strokeWidth={1.5}
+          className="mx-auto mb-6 text-[#082a3f] group-hover:text-orange-500 transition"
+        />
+        <h3 className="text-lg font-semibold text-gray-900">
+          Infraestrutura de TIC
+        </h3>
+      </Link>
+
+      {/* GESTÃO */}
+      <Link
+        href="/gestao-de-ti"
+        className="group bg-white 
+                   border border-gray-200 
+                   rounded-2xl 
+                   p-10 
+                   shadow-md
+                   hover:shadow-2xl
+                   hover:-translate-y-2
+                   transition-all duration-500 
+                   cursor-pointer block"
+      >
+        <Settings
+          size={40}
+          strokeWidth={1.5}
+          className="mx-auto mb-6 text-[#082a3f] group-hover:text-orange-500 transition"
+        />
+        <h3 className="text-lg font-semibold text-gray-900">
+          Gestão de TI
+        </h3>
+      </Link>
+
+      {/* SEGURANÇA */}
+      <Link
+        href="/seguranca-digital"
+        className="group bg-white 
+                   border border-gray-200 
+                   rounded-2xl 
+                   p-10 
+                   shadow-md
+                   hover:shadow-2xl
+                   hover:-translate-y-2
+                   transition-all duration-500 
+                   cursor-pointer block"
+      >
+        <ShieldCheck
+          size={40}
+          strokeWidth={1.5}
+          className="mx-auto mb-6 text-[#082a3f] group-hover:text-orange-500 transition"
+        />
+        <h3 className="text-lg font-semibold text-gray-900">
+          Segurança Digital
+        </h3>
+      </Link>
+
+    </div>
+  </div>
+</section>
       <StatsSection />
       <LgpdBadge />
+
     </>
   );
 }
