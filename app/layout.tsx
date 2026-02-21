@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata = {
   title: "Argus IT",
   description: "Soluções em Tecnologia e Segurança Digital",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -23,15 +26,12 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-[#082a3f] antialiased flex flex-col min-h-screen`}
       >
-        {/* Header fixo */}
         <Header />
 
-        {/* Conteúdo principal */}
         <main className="pt-20 flex-grow">
           {children}
         </main>
 
-        {/* Footer global */}
         <Footer />
       </body>
     </html>
