@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ShieldCheck } from "lucide-react";
-import Link from "next/link"; // Import necessário para navegação
+import Link from "next/link";
 
 // Contador animando apenas quando entra no viewport
 function Counter({ value, suffix }: { value: number; suffix?: string }) {
@@ -44,7 +44,7 @@ function Counter({ value, suffix }: { value: number; suffix?: string }) {
   return <div ref={ref}>{count}{suffix}</div>;
 }
 
-// Seção de métricas + LGPD clicável
+// Stats Section com LGPD como botão premium
 export default function StatsWithLgpdButton() {
   const stats = [
     { number: 6, suffix: "+", label: "Anos de Experiência" },
@@ -54,7 +54,8 @@ export default function StatsWithLgpdButton() {
 
   return (
     <section className="relative bg-[#04131c]">
-      {/* Stats Section */}
+
+      {/* Stats */}
       <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -93,27 +94,38 @@ export default function StatsWithLgpdButton() {
         </div>
       </div>
 
-      {/* LGPD Badge as Button */}
+      {/* LGPD Badge como botão premium */}
       <div className="flex justify-center -mt-16 pb-16 px-6">
-        <Link href="/lgpd">
-          <motion.div
+        <Link href="/lgpd" scroll={true}>
+          <motion.a
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 0.9 }}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="cursor-pointer inline-flex flex-col items-center border border-orange-500/30 bg-white/5 backdrop-blur-xl p-6 rounded-2xl shadow-[0_0_40px_rgba(255,106,0,0.2)]"
+            className="group relative inline-flex flex-col items-center border border-orange-500/30 bg-white/5 backdrop-blur-xl p-6 rounded-2xl shadow-[0_0_40px_rgba(255,106,0,0.2)] hover:bg-white/10 hover:shadow-lg transition-all cursor-pointer"
           >
-            <ShieldCheck className="w-14 h-14 text-orange-500 mb-4" />
+            <ShieldCheck className="w-14 h-14 text-orange-500 mb-4 group-hover:animate-bounce" />
             <h3 className="text-2xl font-bold text-white tracking-wide">
               LGPD Compliant
             </h3>
             <p className="mt-2 text-gray-400 text-sm uppercase tracking-widest">
               Conformidade com a Lei Geral de Proteção de Dados
             </p>
-          </motion.div>
+            <span className="mt-3 text-sm text-orange-400 uppercase tracking-wide font-semibold">
+              Clique para saber mais
+            </span>
+
+            {/* Pequeno efeito visual tipo “ripple” ao hover */}
+            <motion.span
+              className="absolute inset-0 rounded-2xl border border-transparent"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.a>
         </Link>
       </div>
+
     </section>
   );
 }
