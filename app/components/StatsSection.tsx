@@ -1,33 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
+// Contador animando apenas quando entra no viewport
 function Counter({ value, suffix }: { value: number; suffix?: string }) {
   const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    let start = 0;
-    const duration = 1200;
-    const increment = value / (duration / 16);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          let start = 0;
+          const duration = 1200;
+          const increment = value / (duration / 16);
 
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= value) {
-        start = value;
-        clearInterval(timer);
-      }
-      setCount(Math.floor(start));
-    }, 16);
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= value) {
+              start = value;
+              clearInterval(timer);
+            }
+            setCount(Math.floor(start));
+          }, 16);
 
-    return () => clearInterval(timer);
-  }, [value]);
+          setHasAnimated(true); // Garante que não repete
+        }
+      },
+      { threshold: 0.5 } // Quando 50% do elemento está visível
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [value, hasAnimated]);
 
   return (
-    <span>
+    <div ref={ref}>
       {count}
       {suffix}
-    </span>
+    </div>
   );
 }
 
@@ -40,12 +56,10 @@ export default function StatsSection() {
 
   return (
     <section className="relative py-32 bg-[#04131c]">
-
       {/* Linha superior elegante */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
-
         {/* Título corporativo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,7 +79,6 @@ export default function StatsSection() {
 
         {/* Grid */}
         <div className="grid md:grid-cols-3 gap-12">
-
           {stats.map((item, index) => (
             <motion.div
               key={index}
@@ -75,7 +88,7 @@ export default function StatsSection() {
               viewport={{ once: true }}
               className="flex flex-col items-center text-center group"
             >
-              {/* Número */}
+              {/* Número animado apenas quando entra no viewport */}
               <h3 className="text-5xl md:text-6xl font-semibold text-white tracking-tight">
                 <Counter value={item.number} suffix={item.suffix} />
               </h3>
@@ -89,7 +102,6 @@ export default function StatsSection() {
               </p>
             </motion.div>
           ))}
-
         </div>
       </div>
     </section>
