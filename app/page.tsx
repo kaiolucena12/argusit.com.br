@@ -107,32 +107,52 @@ export default function Home() {
 
   </div>
 
+  
+
   {/* IMAGEM GRANDE ESTILO SIGMATECH */}
-  <div className="mt-16 flex justify-center items-center gap-4 px-4">
+  <div className="mt-16 px-4">
 
-  {/* IMAGEM ESQUERDA */}
-  <img
-    src="/cropped-Image-11.jpg"
-    alt=""
-    className="w-[220px] md:w-[280px] h-[160px] md:h-[200px] object-cover 
-               rounded-xl shadow-2xl opacity-80 scale-95"
-  />
+  {/* 📱 MOBILE - CARROSSEL */}
+  <div className="md:hidden overflow-x-auto">
+    <div className="flex gap-4 snap-x snap-mandatory">
 
-  {/* IMAGEM CENTRAL (DESTAQUE) */}
-  <img
-    src="/cropped-consultoria-de-ti1.jpg"
-    alt=""
-    className="w-[260px] md:w-[340px] h-[180px] md:h-[240px] object-cover 
-               rounded-xl shadow-2xl scale-110 z-10"
-  />
+      <img
+        src="/cropped-Image-11.jpg"
+        className="snap-center flex-shrink-0 w-[85%] h-[200px] object-cover rounded-xl shadow-xl"
+      />
 
-  {/* IMAGEM DIREITA */}
-  <img
-    src="/cropped-PDCA-720-11.jpg"
-    alt=""
-    className="w-[220px] md:w-[280px] h-[160px] md:h-[200px] object-cover 
-               rounded-xl shadow-2xl opacity-80 scale-95"
-  />
+      <img
+        src="/cropped-consultoria-de-ti1.jpg"
+        className="snap-center flex-shrink-0 w-[85%] h-[200px] object-cover rounded-xl shadow-xl"
+      />
+
+      <img
+        src="/cropped-PDCA-720-11.jpg"
+        className="snap-center flex-shrink-0 w-[85%] h-[200px] object-cover rounded-xl shadow-xl"
+      />
+
+    </div>
+  </div>
+
+  {/* 💻 DESKTOP - 3 IMAGENS */}
+  <div className="hidden md:flex justify-center items-center gap-6">
+
+    <img
+      src="/cropped-Image-11.jpg"
+      className="w-[280px] h-[200px] object-cover rounded-xl shadow-2xl opacity-80 scale-95"
+    />
+
+    <img
+      src="/cropped-consultoria-de-ti1.jpg"
+      className="w-[340px] h-[240px] object-cover rounded-xl shadow-2xl scale-110 z-10"
+    />
+
+    <img
+      src="/cropped-PDCA-720-11.jpg"
+      className="w-[280px] h-[200px] object-cover rounded-xl shadow-2xl opacity-80 scale-95"
+    />
+
+  </div>
 
 </div>
 
