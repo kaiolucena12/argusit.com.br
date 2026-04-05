@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Headset, Network, Settings, ShieldCheck } from "lucide-react";
 import ParticlesBackground from "./components/ParticlesBackground";
 import StatsSection from "./components/StatsSection";
-import LgpdBadge from "./components/LgpdBadge";
 
 export default function Home() {
   return (
@@ -211,7 +210,6 @@ export default function Home() {
       </section>
 
       <StatsSection />
-      <LgpdBadge />
     </>
   );
 }

@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { ShieldCheck } from "lucide-react";
+import Link from "next/link"; // Import necessário para navegação
 
 // Contador animando apenas quando entra no viewport
 function Counter({ value, suffix }: { value: number; suffix?: string }) {
@@ -26,10 +28,10 @@ function Counter({ value, suffix }: { value: number; suffix?: string }) {
             setCount(Math.floor(start));
           }, 16);
 
-          setHasAnimated(true); // Garante que não repete
+          setHasAnimated(true);
         }
       },
-      { threshold: 0.5 } // Quando 50% do elemento está visível
+      { threshold: 0.5 }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -39,15 +41,11 @@ function Counter({ value, suffix }: { value: number; suffix?: string }) {
     };
   }, [value, hasAnimated]);
 
-  return (
-    <div ref={ref}>
-      {count}
-      {suffix}
-    </div>
-  );
+  return <div ref={ref}>{count}{suffix}</div>;
 }
 
-export default function StatsSection() {
+// Seção de métricas + LGPD clicável
+export default function StatsWithLgpdButton() {
   const stats = [
     { number: 6, suffix: "+", label: "Anos de Experiência" },
     { number: 30, suffix: "+", label: "Empresas Atendidas" },
@@ -55,12 +53,9 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="relative py-32 bg-[#04131c]">
-      {/* Linha superior elegante */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Título corporativo */}
+    <section className="relative bg-[#04131c]">
+      {/* Stats Section */}
+      <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,14 +66,12 @@ export default function StatsSection() {
           <p className="text-sm tracking-[0.3em] text-gray-500 uppercase">
             Nossos Números
           </p>
-
           <h2 className="text-3xl md:text-4xl font-semibold text-white mt-4">
             Resultados que refletem excelência operacional
           </h2>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-3 gap-12 text-center">
           {stats.map((item, index) => (
             <motion.div
               key={index}
@@ -88,21 +81,38 @@ export default function StatsSection() {
               viewport={{ once: true }}
               className="flex flex-col items-center text-center group"
             >
-              {/* Número animado apenas quando entra no viewport */}
               <h3 className="text-5xl md:text-6xl font-semibold text-white tracking-tight">
                 <Counter value={item.number} suffix={item.suffix} />
               </h3>
-
-              {/* Linha sutil */}
               <div className="w-10 h-[2px] bg-orange-500 mt-4 mb-4 transition-all duration-300 group-hover:w-16" />
-
-              {/* Label */}
               <p className="text-gray-400 uppercase tracking-wider text-sm">
                 {item.label}
               </p>
             </motion.div>
           ))}
         </div>
+      </div>
+
+      {/* LGPD Badge as Button */}
+      <div className="flex justify-center -mt-16 pb-16 px-6">
+        <Link href="/lgpd">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="cursor-pointer inline-flex flex-col items-center border border-orange-500/30 bg-white/5 backdrop-blur-xl p-6 rounded-2xl shadow-[0_0_40px_rgba(255,106,0,0.2)]"
+          >
+            <ShieldCheck className="w-14 h-14 text-orange-500 mb-4" />
+            <h3 className="text-2xl font-bold text-white tracking-wide">
+              LGPD Compliant
+            </h3>
+            <p className="mt-2 text-gray-400 text-sm uppercase tracking-widest">
+              Conformidade com a Lei Geral de Proteção de Dados
+            </p>
+          </motion.div>
+        </Link>
       </div>
     </section>
   );
