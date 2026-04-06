@@ -1,0 +1,62 @@
+# =========================
+# ARGUS IT - ROBOTS.TXT
+# =========================
+
+User-agent: *
+Allow: /
+
+# =========================
+# BLOQUEIOS IMPORTANTES
+# =========================
+
+# Sistema interno
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /painel/
+
+# APIs e backend
+Disallow: /api/
+
+# Next.js arquivos internos
+Disallow: /_next/
+Disallow: /static/
+
+# Conteúdo sensível
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /config/
+
+# Parâmetros (evita conteúdo duplicado)
+Disallow: /*?*
+Allow: /*?page=
+
+# =========================
+# OTIMIZAÇÃO DE CRAWL
+# =========================
+
+Crawl-delay: 1
+
+# =========================
+# SITEMAP (ESSENCIAL)
+# =========================
+
+Sitemap: https://seudominio.com/sitemap.xml
+
+# =========================
+# BOTS ESPECÍFICOS (OPCIONAL PRO)
+# =========================
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Bloquear bots ruins (spam/crawler pesado)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
