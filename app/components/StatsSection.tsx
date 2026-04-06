@@ -96,8 +96,8 @@ export default function StatsWithLgpdButton() {
 
       {/* LGPD Badge como botão premium */}
       <div className="flex justify-center -mt-16 pb-16 px-6">
-        <Link href="/lgpd" scroll={true}>
-          <motion.a
+        <Link href="/lgpd" scroll={true} >
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 0.9 }}
             whileHover={{ scale: 1.05 }}
@@ -122,7 +122,7 @@ export default function StatsWithLgpdButton() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             />
-          </motion.a>
+          </motion.div>
         </Link>
       </div>
 

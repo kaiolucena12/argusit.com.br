@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./globals.css"
 import { Inter } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -12,7 +12,7 @@ export const metadata = {
   title: "Argus IT",
   description: "Soluções em Tecnologia e Segurança Digital",
   icons: {
-    icon: "/favicon.ico",
+    icon: "./favicon.ico",
   },
 };
 

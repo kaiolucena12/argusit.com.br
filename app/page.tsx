@@ -88,7 +88,7 @@ export default function Home() {
 
     {/* TÍTULO */}
     <h2 className="text-3xl md:text-4xl font-semibold text-[#082a3f] leading-snug">
-      Departamento de TI completo para sua empresa
+      Temos o departamento de TI completo para sua empresa
     </h2>
 
     {/* DESTAQUE */}
