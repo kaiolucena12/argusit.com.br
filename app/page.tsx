@@ -5,7 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Headset, Network, Settings, ShieldCheck } from "lucide-react";
 import ParticlesBackground from "./components/ParticlesBackground";
+import Autoplay from "embla-carousel-autoplay";
 import StatsSection from "./components/StatsSection";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+
 
 export default function Home() {
   return (
@@ -208,8 +215,48 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* CARROSSEL DE PARCEIROS */}
+<section className="py-16 bg-white">
+  <div className="max-w-7xl mx-auto px-6 text-center">
 
-      <StatsSection />
+    <h2 className="text-2xl md:text-3xl font-semibold text-[#082a3f] mb-10">
+      Parcerias estratégicas que fortalecem nossos resultados
+    </h2>
+
+    <Carousel
+      opts={{ loop: true }}
+      plugins={[
+        Autoplay({
+          delay: 2000,
+          stopOnInteraction: false,
+        }),
+      ]}
+    >
+      <CarouselContent className="items-center">
+
+        {[1,2,3,4,5,6,7].map((num) => (
+          <CarouselItem
+            key={num}
+            className="basis-1/3 md:basis-1/6 flex justify-center"
+          >
+            <Image
+              src={`/logos/banner${num}.png`}
+              alt={`Logo ${num}`}
+              width={200}
+              height={100}
+              className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition"
+            />
+          </CarouselItem>
+        ))}
+
+      </CarouselContent>
+    </Carousel>
+
+  </div>
+</section>
+
+<StatsSection />
+
     </>
   );
 }
