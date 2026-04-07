@@ -14,7 +14,7 @@ export default function QuemSomos() {
             Transformando TI em Resultados Concretos
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-200">
-            Entregando soluções estratégicas e eficientes, convertendo tecnologia em vantagem competitiva e crescimento sustentável para sua empresa.
+            A Argus IT entrega soluções estratégicas e eficientes, convertendo tecnologia em vantagem competitiva e crescimento sustentável para sua empresa.
           </p>
           <a
             href="https://wa.me/5581999776309"
