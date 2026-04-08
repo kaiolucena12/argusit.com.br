@@ -255,6 +255,38 @@ export default function Home() {
   </div>
 </section>
 
+{/* MAPA DE ATAQUES (FORTINET) */}
+<section className="py-24 bg-[#061923] text-white">
+  <div className="max-w-7xl mx-auto px-6 text-center">
+
+    <h2 className="text-3xl md:text-4xl font-semibold mb-6">
+      Ataques cibernéticos em tempo real
+    </h2>
+
+    <p className="text-gray-300 mb-10">
+      Enquanto você navega, milhares de ataques estão acontecendo. Sua empresa está preparada para se defender?
+    </p>
+
+    <div className="w-full h-[500px] rounded-2xl overflow-hidden border border-white/10">
+      <iframe
+        src="https://threatmap.fortiguard.com/"
+        className="w-full h-full"
+        loading="lazy"
+      />
+    </div>
+
+    <a
+      href="https://threatmap.fortiguard.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-6 inline-block bg-orange-500 px-6 py-3 rounded-xl font-medium hover:bg-orange-600 transition"
+    >
+      Abrir mapa completo
+    </a>
+
+  </div>
+</section>
+
 <StatsSection />
 
     </>
